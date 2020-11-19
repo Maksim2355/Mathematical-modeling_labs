@@ -1,4 +1,4 @@
-from labs_1 import utils
+import utils
 
 
 def parse_file_points(filename):
