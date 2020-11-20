@@ -1,4 +1,6 @@
 import matplotlib.pyplot as plt
+import numpy as np
+from find_polynomial import find_polynomial as polynomial
 from parser_points import *
 
 '''' Функция отрисовки графика
@@ -8,11 +10,13 @@ from parser_points import *
 
 def draw_graph(vectors):
     filter_vectors = get_graphs(vectors)
-    print(vectors)
     for vector in filter_vectors:
-        x = vector[0]
-        y = vector[1]
+        x = np.array(vector[0], dtype=float)
+        y = np.array(vector[1], dtype=float)
+        xl = np.linspace(np.min(x), np.max(y))
+        yl = polynomial(x, y, xl)
         plt.scatter(x, y)
+        plt.plot(xl, yl)
     plt.show()
 
 
