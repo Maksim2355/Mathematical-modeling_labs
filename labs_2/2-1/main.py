@@ -36,7 +36,8 @@ def draw_graph(vectors):
     for vector in filter_vectors:
         x = np.array(vector[0], dtype=float)
         y = np.array(vector[1], dtype=float)
-        xl = np.linspace(np.min(x), np.max(y))
+        xl = np.linspace(np.min(x), np.max(x))
+        print(xl)
         yl = find_polynomial(x, y, xl)
         plt.scatter(x, y)
         plt.plot(xl, yl)

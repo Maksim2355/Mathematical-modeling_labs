@@ -11,7 +11,7 @@ def parse_file_points(filename):
         y_str = utils.remove_char(vectors[1]).split(',')
         y = utils.str_to_list(y_str)
         #Если вектор содержит меньше 5 элементов, или их значения не равны, то пропускаем
-        if (len(x) < 5 or len(y) < 5) or (len(x) != len(y)):
+        if len(x) != len(y):
             continue
         list_points_parse.append([x, y])
     f.close()
