@@ -1,26 +1,5 @@
-import matplotlib.pyplot as plt
-import numpy as np
-from find_polynomial import find_polynomial as polynomial
-from parser_points import *
 
-'''' Функция отрисовки графика
-    На входе получает вектора точек
-    @vectors представляет собой двумерный список точек на графике'''
-
-
-def draw_graph(vectors):
-    filter_vectors = get_graphs(vectors)
-    for vector in filter_vectors:
-        x = np.array(vector[0], dtype=float)
-        y = np.array(vector[1], dtype=float)
-        xl = np.linspace(np.min(x), np.max(y))
-        yl = polynomial(x, y, xl)
-        plt.scatter(x, y)
-        plt.plot(xl, yl)
-    plt.show()
-
-
-def get_graphs(vectors):
+def filter_graphs(vectors):
     filter_vectors = []
     print(f"Количество графиков в исходно выражении {len(vectors)} Выберите нужный диапазон или определнный график\n"
           f"Пример: 1-3 или 5. Для выбора всех графиков введите 0")
@@ -44,7 +23,3 @@ def get_graphs(vectors):
     else:
         return []
     return filter_vectors
-
-
-file = parse_file_points('points')
-draw_graph(file)
