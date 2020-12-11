@@ -58,8 +58,8 @@ d_rayleigh = float(input("Введите дисперсию для релеев�
 sigma_rayleigh = math.sqrt(d_rayleigh)
 m_rayleigh = math.sqrt(math.pi / 2) * sigma_gauss  # Мат ожидание
 
-ar = int(input("Введите начальное значение интервала Релея: "))
-br = int(input("Введите конечное знаение интервала Релея: "))
+ar = 0
+br = sigma_rayleigh * int(input("Введите множитель знаение интервала Релея: "))
 
 ri_neumann = generate_random_variables(1000)
 rj_neumann = generate_random_variables(1000)
