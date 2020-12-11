@@ -1,5 +1,6 @@
 import math
 import random as rnd
+import numpy as np
 
 
 def reverse_fun(ri, ai, bi):
@@ -18,7 +19,6 @@ def generate_random_variables(size):
 
 
 # 1.1 Формируем выборку случайных велечин методом обратных функций
-
 a = int(input("Введите начальное значение интервала: "))
 b = int(input("Введите конечное знаение интервала: "))
 
@@ -32,8 +32,9 @@ for i in r_normal:
     xr = reverse_fun(i, a, b)
     x_normal.append(xr)
 
-# 1.2 Формируем выборку велечин, распредленных по Гауссовскому закону с параметрами m и D
+interval_normal = [a, b]
 
+# 1.2 Формируем выборку велечин, распредленных по Гауссовскому закону с параметрами m и D
 m_gauss = float(input("Введите мат ожидание для распределения Гаусса: "))  # Мат ожидание
 d_gauss = float(input("Введите дисперсию для распределения Гаусса: "))  # Дисперсия
 sigma_gauss = math.sqrt(d_gauss)  # Среднеквадратичное отклонеие
@@ -49,13 +50,16 @@ for i in range(len(r_gauss)):
     x = (v - m_gauss) / sigma_gauss
     x_gauss.append(x)
 
+# Интервал для построение гипсторграммы и полигона
+interval_gauss = [np.min(x_gauss), np.max(x_gauss)]
+
 # 1.3   Осууществим выборку случайных значенй по методу Неймана
+d_rayleigh = float(input("Введите дисперсию для релеевского закона: "))
+sigma_rayleigh = math.sqrt(d_rayleigh)
+m_rayleigh = math.sqrt(math.pi / 2) * sigma_gauss  # Мат ожидание
 
 ar = int(input("Введите начальное значение интервала Релея: "))
 br = int(input("Введите конечное знаение интервала Релея: "))
-
-mr = float(input("Введите мат ожидание для распределения Релея: "))  # Мат ожидание
-sigma_rayleigh = float(input("Введите среднеквадратичное отклонение для релеевского закона: "))
 
 ri_neumann = generate_random_variables(1000)
 rj_neumann = generate_random_variables(1000)
@@ -64,9 +68,9 @@ x_neumann = []
 i = 0
 while len(x_neumann) <= 1000 and i < 1000:
     X = (br - ar) * ri_neumann[i]
-    Y = mr * rj_neumann[i]
+    Y = m_rayleigh * rj_neumann[i]
     if Y <= rayleigh_distribution(X, sigma_rayleigh):
         x_neumann.append(X)
     i += 1
 
-print(len(x_neumann))
+interval_neumann = [np.min(x_neumann), np.max(x_neumann)]
