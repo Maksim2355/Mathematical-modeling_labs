@@ -73,4 +73,4 @@ while len(x_neumann) <= 1000 and i < 1000:
         x_neumann.append(X)
     i += 1
 
-interval_neumann = [np.min(x_neumann), np.max(x_neumann)]
+interval_neumann = [0, np.max(x_neumann)]
