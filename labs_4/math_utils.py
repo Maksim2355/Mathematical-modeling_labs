@@ -2,7 +2,6 @@ import math
 import random as rnd
 
 
-
 def reverse_fun(ri, ai, bi):
     return (ri * (bi - ai)) - ai
 
