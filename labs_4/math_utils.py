@@ -1,5 +1,6 @@
 import math
 import random as rnd
+import matplotlib.pyplot as plt
 
 
 def reverse_fun(ri, ai, bi):
@@ -22,3 +23,39 @@ def generate_random_variables(size):
 def fun_gauss(v, m, sigma, N):
     el = math.sqrt(12 / N) * (v - (N / 2))
     return sigma * el + m
+
+
+def fn_normal(a, b, x):
+    if a <= x <= b:
+        return 1 / (b - a)
+    else:
+        return 0
+
+
+def fn_gauss(x, m, sigma):
+    return (1 / (sigma * math.sqrt(2 * math.pi))) * math.exp(-1 * (x - m) ** 2 / (2 * (sigma ** 2)))
+
+
+def fn_rayleigh(x, sigma):
+    return (x / (sigma ** 2)) * math.exp(-(x ** 2) / (2 * (sigma ** 2)))
+
+
+def plot_density_fn(X, a, b, dstr, m=0, d=0):
+    if dstr == 1:
+        r = []
+        for x in X:
+            r.append(fn_normal(a, b, x))
+        plt.plot(X, r)
+    elif dstr == 2:
+        r = []
+        sigma = math.sqrt(d)
+        for x in X:
+            r.append(fn_gauss(x, m, sigma))
+        plt.plot(X, r)
+
+    elif dstr == 3:
+        r = []
+        sigma = math.sqrt(d)
+        for x in X:
+            r.append(fn_rayleigh(x, sigma))
+        plt.plot(X, r)
