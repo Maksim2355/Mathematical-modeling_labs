@@ -38,7 +38,7 @@ def fn_rayleigh(x, sigma):
     return (x / (sigma ** 2)) * math.exp(-1 * ((x ** 2) / (2 * (sigma ** 2))))
 
 
-def plot_density_fn(X, a, b, dstr, m=0, d=0):
+def plot_density_fn(X, a, b, dstr, m=0, d=0, sigma=0):
     if dstr == 1:
         r = []
         for x in X:
@@ -50,10 +50,8 @@ def plot_density_fn(X, a, b, dstr, m=0, d=0):
         for x in X:
             r.append(fn_gauss(x, m, sigma))
         plt.plot(X, r)
-
     elif dstr == 3:
         r = []
-        sigma = math.sqrt(d)
         for x in X:
             r.append(fn_rayleigh(x, sigma))
         plt.plot(X, r)

@@ -36,18 +36,18 @@ print("Выборочная дисперсия ожидание распреде
 print("_____________________________________________________________________________________")
 
 # 1.3   Осууществим выборку случайных значенй по методу Неймана
-d_rayleigh = float(input("Введите дисперсию для релеевского закона: "))
+sigma_rayleigh = float(input("Введите сигму для релеевского закона: "))
 print("////////////////////////////////////////////////////////////////////////////////")
 
-x_neumann, interval_neumann = create_rayleigh_sampling(d_rayleigh, 4)
+x_neumann, interval_neumann = create_rayleigh_sampling(sigma_rayleigh, 4)
 data_hist_neumann, k_neumann = create_histogram(x_neumann, interval_neumann)
 data_polygon_neumann, kp_neumann = create_polygon(x_neumann, interval_neumann)
 
-plot_histogram(x_neumann, data_hist_neumann, k_neumann, interval_neumann, "Распределение Релея", 3, d=d_rayleigh)
-plot_polygon(x_neumann, data_polygon_neumann, kp_neumann, interval_neumann, "Распределение Релея", 3, d=d_rayleigh)
+plot_histogram(x_neumann, data_hist_neumann, k_neumann, interval_neumann, "Распределение Релея", 3, sigma=sigma_rayleigh)
+plot_polygon(x_neumann, data_polygon_neumann, kp_neumann, interval_neumann, "Распределение Релея", 3, sigma=sigma_rayleigh)
 
-print("Математическое ожидание распрееделение Рэле ", math.sqrt((math.pi * d_rayleigh) / 2))
-print("Дисперсия распределения Рэле: ", (2 - math.pi/2) * d_rayleigh)
+print("Математическое ожидание распрееделение Рэле ", math.sqrt((math.pi * (sigma_rayleigh**2)) / 2))
+print("Дисперсия распределения Рэле: ", (2 - math.pi/2) * (sigma_rayleigh**2))
 mk = find_mathematical_expectation(x_neumann)
 print("Выборочное математическое ожидание распределения Рэле: ", mk)
 print("Выборочная дисперсия распределения Рэле: ", find_dispersion(x_neumann, mk))

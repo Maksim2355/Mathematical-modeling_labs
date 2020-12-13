@@ -34,8 +34,7 @@ def create_gauss_sampling(m, d):
     return x, interval
 
 
-def create_rayleigh_sampling(d, n):
-    sigma = math.sqrt(d)
+def create_rayleigh_sampling(sigma, n):
     # Легко убедиться, что максимальное значение приобретает функция если аргумент xl равен sigma
     max_y = rayleigh_distribution(sigma, sigma)
     br = sigma * n

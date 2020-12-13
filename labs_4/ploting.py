@@ -1,7 +1,7 @@
 from labs_4.math_utils import *
 
 
-def plot_histogram(X, data_hist, k, interval, title, dstr, m=0, d=0):
+def plot_histogram(X, data_hist, k, interval, title, dstr, m=0, d=0, sigma=0):
     a = interval[0]
     b = interval[1]
     delta = (b - a) / k
@@ -12,11 +12,11 @@ def plot_histogram(X, data_hist, k, interval, title, dstr, m=0, d=0):
         rl = (x_max + x_min) / 2
         plt.bar(rl, gl, width=delta, color="b")
     plt.title(title)
-    plot_density_fn(X, a, b, dstr, m, d)
+    plot_density_fn(X, a, b, dstr, m, d, sigma)
     plt.show()
 
 
-def plot_polygon(X, data_polygon, k, interval, title, dstr, m=0, d=0):
+def plot_polygon(X, data_polygon, k, interval, title, dstr, m=0, d=0, sigma=0):
     a = interval[0]
     b = interval[1]
     x = []
@@ -27,5 +27,5 @@ def plot_polygon(X, data_polygon, k, interval, title, dstr, m=0, d=0):
         plt.scatter(x, y)
     plt.plot(x, y)
     plt.title(title)
-    plot_density_fn(X, a, b, dstr, m, d)
+    plot_density_fn(X, a, b, dstr, m, d, sigma)
     plt.show()
