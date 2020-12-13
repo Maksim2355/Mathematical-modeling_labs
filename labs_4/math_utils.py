@@ -4,16 +4,14 @@ import matplotlib.pyplot as plt
 
 
 def reverse_fun(ri, ai, bi):
-    return (ri * (bi - ai)) - ai
+    return (ri * (bi - ai)) + ai
 
 
 def rayleigh_distribution(xl, sigma):
-    return (xl / sigma ** 2) * math.exp(- ((xl ** 2) / 2 * (sigma ** 2)))
+    return (xl / (sigma ** 2)) * math.exp(-1 * ((xl ** 2) / (2 * (sigma ** 2))))
 
 
 def generate_random_variables(size):
-    if size is None:
-        return rnd.random()
     r = []
     for i in range(size):
         r.append(rnd.random())
@@ -37,7 +35,7 @@ def fn_gauss(x, m, sigma):
 
 
 def fn_rayleigh(x, sigma):
-    return (x / (sigma ** 2)) * math.exp(-(x ** 2) / (2 * (sigma ** 2)))
+    return (x / (sigma ** 2)) * math.exp(-1 * ((x ** 2) / (2 * (sigma ** 2))))
 
 
 def plot_density_fn(X, a, b, dstr, m=0, d=0):

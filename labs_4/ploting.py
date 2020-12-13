@@ -1,6 +1,4 @@
-import matplotlib.pyplot as plt
 from labs_4.math_utils import *
-import math
 
 
 def plot_histogram(X, data_hist, k, interval, title, dstr, m=0, d=0):

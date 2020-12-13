@@ -29,7 +29,6 @@ def create_gauss_sampling(m, d):
         xi = fun_gauss(v, m, sigma, n)
         x.append(xi)
     x = quicksort(x)
-    print(x)
     # Интервал от минимального до максимального x
     interval = [x[0], x[-1]]
     return x, interval
@@ -41,12 +40,11 @@ def create_rayleigh_sampling(d, n):
     max_y = rayleigh_distribution(sigma, sigma)
     br = sigma * n
     ri = generate_random_variables(3000)
-    rj = generate_random_variables(3000)
     x = []
-    i = 0
+    i = 1
     while i < 3000:
         X = br * ri[i]
-        Y = max_y * rj[i]
+        Y = max_y * ri[i - 1]
         if Y <= rayleigh_distribution(X, sigma):
             x.append(X)
         i += 1
