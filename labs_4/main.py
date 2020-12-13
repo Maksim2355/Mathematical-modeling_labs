@@ -54,8 +54,7 @@ plot_histogram(x_neumann, data_hist_neumann, k_neumann, interval_neumann, "Ра�
 plot_polygon(x_neumann, data_polygon_neumann, kp_neumann, interval_neumann, "Распределение Релея", 3, d=d_rayleigh)
 
 print("Математическое ожидание распрееделение Рэле ", math.sqrt((math.pi * d_rayleigh) / 2))
-print("Дисперсия распределения Рэле: ", d_rayleigh)
+print("Дисперсия распределения Рэле: ", (2 - math.pi/2) * d_rayleigh)
 mk = find_mathematical_expectation(x_neumann)
 print("Выборочное математическое ожидание распределения Рэле: ", mk)
 print("Выборочная дисперсия распределения Рэле: ", find_dispersion(x_neumann, mk))
-print("_____________________________________________________________________________________")
