@@ -1,5 +1,6 @@
 from utils import quicksort
 from labs_4.math_utils import *
+import random as rnd
 
 
 # Возвращаем выборку и интервал
@@ -19,16 +20,16 @@ def create_normal_sampling(a, b):
 
 def create_gauss_sampling(m, d):
     sigma = math.sqrt(d)
-    r = generate_random_variables(1000)
     n = 6
     x = []
-    for i in range(len(r)):
+    for i in range(1000):
         v = 0
         for j in range(n):
-            v += r[i]
-        xi = (v - m) / sigma
+            v += rnd.random()
+        xi = fun_gauss(v, m, sigma, n)
         x.append(xi)
     x = quicksort(x)
+    print(x)
     # Интервал от минимального до максимального x
     interval = [x[0], x[-1]]
     return x, interval

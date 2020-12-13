@@ -11,7 +11,14 @@ def rayleigh_distribution(xl, sigma):
 
 
 def generate_random_variables(size):
+    if size is None:
+        return rnd.random()
     r = []
     for i in range(size):
         r.append(rnd.random())
     return r
+
+
+def fun_gauss(v, m, sigma, N):
+    el = math.sqrt(12 / N) * (v - (N / 2))
+    return sigma * el + m
