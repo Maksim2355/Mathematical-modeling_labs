@@ -7,17 +7,21 @@ from labs_4.sampling_value import *
 # 1.1 Формируем выборку случайных велечин методом обратных функций
 a = int(input("Введите начальное значение интервала: "))
 b = int(input("Введите конечное знаение интервала: "))
+
 x_normal, interval_normal = create_normal_sampling(a, b)
 data_hist_normal, k_normal = create_histogram(x_normal, interval_normal)
 data_polygon_normal, kp_normal = create_polygon(x_normal, interval_normal)
+
 plot_histogram(x_normal, data_hist_normal, k_normal, interval_normal, "Равномерное распределение", 1)
 plot_polygon(x_normal, data_polygon_normal, kp_normal, interval_normal, "Равномерное распределение", 1)
+
 print("////////////////////////////////////////////////////////////////////////////////")
 mn = find_mathematical_expectation(x_normal)
 print("Математическое ожидание равномерного распределения: ", (b + a) / 2)
-print("Дисперсия равномерного распределения", (b - a)**2 / 12)
+print("Дисперсия равномерного распределения", (b - a) ** 2 / 12)
 print("Выборочное математическое ожидание равномерного распределения: ", mn)
 print("Выборочная дисперсия равномерного распределения", find_dispersion(x_normal, mn))
+
 print("_____________________________________________________________________________________")
 # 1.2 Формируем выборку велечин, распредленных по Гауссовскому закону с параметрами m и D
 m_gauss = float(input("Введите мат ожидание для распределения Гаусса: "))  # Мат ожидание
@@ -43,11 +47,13 @@ x_neumann, interval_neumann = create_rayleigh_sampling(sigma_rayleigh, 4)
 data_hist_neumann, k_neumann = create_histogram(x_neumann, interval_neumann)
 data_polygon_neumann, kp_neumann = create_polygon(x_neumann, interval_neumann)
 
-plot_histogram(x_neumann, data_hist_neumann, k_neumann, interval_neumann, "Распределение Релея", 3, sigma=sigma_rayleigh)
-plot_polygon(x_neumann, data_polygon_neumann, kp_neumann, interval_neumann, "Распределение Релея", 3, sigma=sigma_rayleigh)
+plot_histogram(x_neumann, data_hist_neumann, k_neumann, interval_neumann, "Распределение Релея", 3,
+               sigma=sigma_rayleigh)
+plot_polygon(x_neumann, data_polygon_neumann, kp_neumann, interval_neumann, "Распределение Релея", 3,
+             sigma=sigma_rayleigh)
 
-print("Математическое ожидание распрееделение Рэле ", math.sqrt((math.pi * (sigma_rayleigh**2)) / 2))
-print("Дисперсия распределения Рэле: ", (2 - math.pi/2) * (sigma_rayleigh**2))
+print("Математическое ожидание распрееделение Рэле ", math.sqrt((math.pi * (sigma_rayleigh ** 2)) / 2))
+print("Дисперсия распределения Рэле: ", (2 - math.pi / 2) * (sigma_rayleigh ** 2))
 mk = find_mathematical_expectation(x_neumann)
 print("Выборочное математическое ожидание распределения Рэле: ", mk)
 print("Выборочная дисперсия распределения Рэле: ", find_dispersion(x_neumann, mk))

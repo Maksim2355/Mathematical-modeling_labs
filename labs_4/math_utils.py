@@ -30,12 +30,29 @@ def fn_normal(a, b, x):
         return 0
 
 
+def f_normal(a, b, x):
+    if a <= x <= b:
+        return (x - a) / (b - a)
+    elif x >= b:
+        return 1
+    else:
+        return 0
+
+
 def fn_gauss(x, m, sigma):
     return (1 / (sigma * math.sqrt(2 * math.pi))) * math.exp(-1 * (x - m) ** 2 / (2 * (sigma ** 2)))
 
 
+def f_gauss(x, m, sigma):
+    return (1 / 2) * (1 + math.erf((x - m) / math.sqrt(2 * (sigma ** 2))))
+
+
 def fn_rayleigh(x, sigma):
     return (x / (sigma ** 2)) * math.exp(-1 * ((x ** 2) / (2 * (sigma ** 2))))
+
+
+def f_rayleigh(x, sigma):
+    return 1 - math.exp(-1 * (x**2) / 2 * sigma**2)
 
 
 def plot_density_fn(X, a, b, dstr, m=0, d=0, sigma=0):
@@ -54,4 +71,23 @@ def plot_density_fn(X, a, b, dstr, m=0, d=0, sigma=0):
         r = []
         for x in X:
             r.append(fn_rayleigh(x, sigma))
+        plt.plot(X, r)
+
+
+def plot_density_f(X, a, b, dstr, m=0, d=0, sigma=0):
+    if dstr == 1:
+        r = []
+        for x in X:
+            r.append(f_normal(a, b, x))
+        plt.plot(X, r)
+    elif dstr == 2:
+        r = []
+        sigma = math.sqrt(d)
+        for x in X:
+            r.append(f_gauss(x, m, sigma))
+        plt.plot(X, r)
+    elif dstr == 3:
+        r = []
+        for x in X:
+            r.append(f_rayleigh(x, sigma))
         plt.plot(X, r)

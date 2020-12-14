@@ -12,6 +12,7 @@ def plot_histogram(X, data_hist, k, interval, title, dstr, m=0, d=0, sigma=0):
         rl = (x_max + x_min) / 2
         plt.bar(rl, gl, width=delta, color="b")
     plt.title(title)
+    # Рисуем плотность распределения(Да, мне лень нормально называть)
     plot_density_fn(X, a, b, dstr, m, d, sigma)
     plt.show()
 
@@ -27,5 +28,6 @@ def plot_polygon(X, data_polygon, k, interval, title, dstr, m=0, d=0, sigma=0):
         plt.scatter(x, y)
     plt.plot(x, y)
     plt.title(title)
-    plot_density_fn(X, a, b, dstr, m, d, sigma)
+    # Рисуем функцию распределения(Да, мне лень нормально называть)
+    plot_density_f(X, a, b, dstr, m, d, sigma)
     plt.show()

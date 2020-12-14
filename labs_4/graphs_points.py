@@ -5,7 +5,7 @@ def create_histogram(X, interval):
     a = interval[0]
     b = interval[1]
     N = len(X)
-    k = int(1 + math.log2(N))  # число интервалов
+    k = int(1 + 3.21 * math.log2(N))  # число интервалов
     R = b - a  # Определяем размах выборки
     width_interval = R / k
     data_hist = []
@@ -20,7 +20,7 @@ def create_histogram(X, interval):
             # Массив отсортирован и если элемент выходит из интервала, то заканчиваем подсчет
             if x > x_max:
                 break
-        w = count_elements / N
+        w = count_elements / (N * width_interval)
         data_hist.append([w, x_min, x_max])
     return data_hist, k
 
