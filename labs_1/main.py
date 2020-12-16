@@ -23,7 +23,7 @@ def get_graphs(vectors):
     command = input("").split('-')
     # Если пользователь ввел одно число
     if len(command) == 1:
-        ##Если командра 0, то добавляем весь список
+        # Если командра 0, то добавляем весь список
         if int(command[0]) == 0:
             filter_vectors = vectors
         filter_vectors.append(vectors[int(command[0]) - 1])
