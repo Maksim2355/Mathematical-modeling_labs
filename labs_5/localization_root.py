@@ -1,5 +1,4 @@
 from labs_5.equations import *
-import random
 
 
 def get_segments(a, b, has_equations_params, params_one=0, params_two=0):
@@ -14,7 +13,7 @@ def get_segments(a, b, has_equations_params, params_one=0, params_two=0):
             has_root = fun_with_parameters(begin, params_one, params_two) \
                        * fun_with_parameters(end, params_one, params_two) < 0
         else:
-            has_root = fun(begin) * fun(end) < 0
+            has_root = t(begin) * t(end) < 0
         # Необходимое условие
         if has_root:
             # Если корень единственный, то добавляем интервал в сегменты, если нет, то разбиваем интервал
@@ -23,6 +22,11 @@ def get_segments(a, b, has_equations_params, params_one=0, params_two=0):
             else:
                 n += 1
                 end = a
+                continue
+        else:
+            n += 1
+            end = a
+            continue
         begin = end
     return segments
 
@@ -39,9 +43,9 @@ def check_monotony(min, max, has_equations_params, params_one=0, params_two=0):
     for i in range(k):
         r = min_value_fn
         if has_equations_params:
-            params = derivative_fun_with_parameters(r, params_one, params_two)
+            params = fun_with_parameters_derivative(r, params_one, params_two)
         else:
-            params = derivative_fun(r)
+            params = td(r)
         list_derivative_values.append(params)
         min_value_fn += ln
     return is_monotonic(list_derivative_values)
