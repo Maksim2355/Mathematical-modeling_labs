@@ -27,3 +27,10 @@ def iteration_method_params(xo, eps, n, params_one=0, params_two=0):
             return xn
         x = xn
     return "Не хватает точности"
+
+
+def find_root_iteration(xo, eps, n, has_params, a=0, b=0):
+    if has_params:
+        return iteration_method_params(xo, eps, n, a, b)
+    else:
+        return iteration_method(xo, eps, n)

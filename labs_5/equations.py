@@ -12,6 +12,10 @@ def fun_with_parameters_derivative(x, a, b):
     return -1 * (a * b * np.exp(-1 * (b * x))) - 1
 
 
+def fun_with_parameters_second_derivative(x, a, b):
+    return a * (b ** 2) * np.exp(-1 * (b * x))
+
+
 # Выразили x = fi(x)
 def fi_with_parameters(x, a, b):
     return a * np.exp(-1 * (b * x))
@@ -27,8 +31,12 @@ def fun(x):
 
 
 # Производная функции без параметров
-def derivative_fun(x):
+def fun_derivative(x):
     return (2 ** x) * (math.log(2) * x + 1)
+
+
+def fun_second_derivative(x):
+    return (2 ** x) * (math.log(2) ** 2) * x + (2 ** (x + 1)) * math.log(2)
 
 
 # Выразили x = fi(x)
@@ -39,10 +47,3 @@ def fi(x):
 def fi_derivative(x):
     return (-2 ** (-1 * x)) * math.log(2)
 
-
-def t(x):
-    return math.exp(x) - 10 * x
-
-
-def td(x):
-    return math.exp(x) - 10
