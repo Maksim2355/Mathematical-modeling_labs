@@ -52,7 +52,7 @@ def fn_rayleigh(x, sigma):
 
 
 def f_rayleigh(x, sigma):
-    return 1 - math.exp(-1 * (x**2) / 2 * sigma**2)
+    return 1 - math.exp(-1 * (x ** 2) / (2 * sigma ** 2))
 
 
 def plot_density_fn(X, a, b, dstr, m=0, d=0, sigma=0):

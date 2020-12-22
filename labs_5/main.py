@@ -8,15 +8,15 @@ from labs_5.ploting import *
 # n = int(input("Введите максимальное число итераций: "))
 # eps = float(input("Введите точность: "))
 #
-print("Уравнение с параметрами вида a * np.exp(-1 * (b * x)) - x")
+print("Уравнение с параметрами вида math.tan(a * x) - b * x")
 print("Параметр a = 1, b = 2")
-print("Уравнение без параметров вида x * 2**x - 1")
+print("Уравнение без параметров вида 3 * x + cos(x) + 1")
 # params_one = float(input("Введите первый параметр m для уравнения: "))
 # params_two = float(input("Введите второй параметр k для уравнения: "))
 
-n = 1000
+n = 5
 print("Число итераций", n)
-eps = 0.00001
+eps = 0.001
 print("eps ", eps)
 params_one = 1
 params_two = 2
@@ -24,8 +24,8 @@ params_two = 2
 xo_iter = 0.4
 print("Начальное приближение метода итераций", xo_iter)
 
-# plotting_graph_iteration(-1, 2)
-# plotting_graph_iteration_params(-1, 1, params_one, params_two)
+plotting_graph_iteration(-1, 2)
+plotting_graph_iteration_params(-1, 1, params_one, params_two)
 
 print("Решения уравнения без параметров методом итерации: ", find_root_iteration(xo_iter, eps, n, False))
 print("Решения уравнения c параметрами методом итерации: ",
@@ -33,7 +33,7 @@ print("Решения уравнения c параметрами методом
 
 print("____________________________________________________________________________")
 
-xo_newton = 0.5
+xo_newton = 0.1
 print("Начальное приближение метода Ньютона", xo_newton)
 print("Решения уравнения без параметров методом Ньютона: ", find_root_newton(xo_newton, eps, n, False))
 print("Решения уравнения c параметрами методом Ньютона: ",
